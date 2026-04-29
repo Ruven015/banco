@@ -21,7 +21,7 @@ class UserController extends Controller
         // 🔹 LISTAR
     public function index()
     {
-        $usuarios = User::with(['empleado', 'rol'])->get();
+        $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
     }
 
