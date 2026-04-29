@@ -64,15 +64,17 @@
     @auth
 
     <!-- 🔔 Notificaciones -->
+@if(auth()->user()->cliente)    
+    <!-- 🔔 Notificaciones -->
     <li class="nav-item">
         <a href="{{ route('notificaciones.index') }}" class="nav-link position-relative">
             🔔
 
             @php
-$noLeidas = auth()->user()->cliente->notificaciones()
-    ->where('leida', false)
-    ->count();
-@endphp
+            $noLeidas = auth()->user()->cliente->notificaciones()
+                ->where('leida', false)
+                ->count();
+            @endphp
 
             @if($noLeidas > 0)
                 <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
@@ -81,6 +83,7 @@ $noLeidas = auth()->user()->cliente->notificaciones()
             @endif
         </a>
     </li>
+@endif
 
     <!-- 👤 Usuario -->
     <li class="nav-item dropdown">
