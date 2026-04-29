@@ -13,7 +13,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        
+        $user = auth()->user();
+
+        if ($user->cliente) {
+        return redirect()->route('clientes.index');
+        }
         return view('dashboard', [
         'transacciones_por_dia' => \App\Models\Transaccion::select(
             DB::raw('DATE(fecha_hora) as fecha'),
