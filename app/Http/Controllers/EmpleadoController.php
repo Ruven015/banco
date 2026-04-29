@@ -86,6 +86,12 @@ class EmpleadoController extends Controller
         $emp = Empleado::findOrFail($id);
     $emp->update($request->all());
 
+    if ($request->has('user_id')) {
+        $emp->user_id = $request->user_id ?: null;
+        $emp->save();
+    }
+
+
     return redirect()->route('empleados.index');
     }
 
