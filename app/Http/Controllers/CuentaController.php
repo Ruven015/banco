@@ -7,6 +7,7 @@ use App\Models\Cuenta;
 use App\Models\Cliente;
 use App\Models\TipoCuenta;
 use App\Models\Sucursal;
+use App\Models\Bitacora;
 
 class CuentaController extends Controller
 {
