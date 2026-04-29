@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Empleado;
 use App\Models\Bitacora;
 
 class User extends Authenticatable
@@ -41,10 +40,7 @@ class User extends Authenticatable
     /**
      * Relación 1 a 1 con empleado
      */
-    public function empleado()
-    {
-        return $this->hasOne(Empleado::class);
-    }
+    
 
     /**
      * Relación con bitácora
