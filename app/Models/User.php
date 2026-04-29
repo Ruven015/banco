@@ -41,7 +41,10 @@ class User extends Authenticatable
     /**
      * Relación 1 a 1 con empleado
      */
-    
+    public function empleado()
+    {
+        return $this->hasOne(Empleado::class);
+    }
 
     /**
      * Relación con bitácora

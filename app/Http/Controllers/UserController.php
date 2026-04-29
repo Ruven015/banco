@@ -41,7 +41,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
-            'empleado_id' => 'required|exists:empleados,id',
             'rol_id' => 'required|exists:roles,id'
         ]);
 
@@ -52,10 +51,15 @@ class UserController extends Controller
             'rol_id' => $request->rol_id
         ]);
 
-        // vincular empleado
-        $empleado = Empleado::find($request->empleado_id);
+        // vincular empleado SOLO si viene
+if ($request->empleado_id) {
+    $empleado = Empleado::find($request->empleado_id);
+
+    if ($empleado) {
         $empleado->user_id = $user->id;
         $empleado->save();
+    }
+}
 
         return redirect()->route('usuarios.index');
     }
