@@ -19,12 +19,8 @@
 
     <input type="password" name="password" placeholder="Password" class="form-control mb-2">
 
-    <!-- Empleado -->
-    <select name="empleado_id" class="form-control mb-2">
-        @foreach($empleados as $e)
-            <option value="{{ $e->id }}">{{ $e->nombre }}</option>
-        @endforeach
-    </select>
+  
+   
 
     <!-- Rol -->
     <select name="rol_id" class="form-control mb-2">
