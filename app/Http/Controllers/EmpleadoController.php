@@ -33,7 +33,7 @@ class EmpleadoController extends Controller
     {
         //
         $sucursales = Sucursal::all();
-    $usuarios = User::all();
+    $usuarios = User::doesntHave('empleado')->get();
 
     return view('empleados.create', compact('sucursales', 'usuarios'));
     }
