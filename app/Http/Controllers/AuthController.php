@@ -24,20 +24,20 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            $request->session()->regenerate();
-        
+    $request->session()->regenerate();
 
-            $user = auth()->user();
-            dd($user, $user->cliente);
+    $user = auth()->user();
 
-            if ($user->rol_id == 2 && $user->cliente) {
-                return redirect('/cliente');
-            }
+    dd($user, $user->cliente);
 
-            if ($user->rol_id == 1) {
-                return redirect('/');
-            }
-        }
+    if ($user->rol_id == 2 && $user->cliente) {
+        return redirect('/cliente');
+    }
+
+    if ($user->rol_id == 1) {
+        return redirect('/');
+    }
+}
 
         return back()->withErrors([
             'email' => 'Credenciales incorrectas',
