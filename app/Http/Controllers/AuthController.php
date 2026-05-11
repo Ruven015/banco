@@ -28,6 +28,7 @@ class AuthController extends Controller
         
 
             $user = auth()->user();
+            dd($user, $user->cliente);
 
             if ($user->rol_id == 2 && $user->cliente) {
                 return redirect('/cliente');
