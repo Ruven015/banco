@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Bitacora;
+use App\Models\User;
 
 class ClienteController extends Controller
 {
@@ -31,9 +32,9 @@ public function __construct()
      */
     public function create()
     {
-        //
-        return view('clientes.create');
-        
+        $usuarios = User::where('rol_id', 2)->get();
+
+        return view('clientes.create', compact('usuarios'));
     }
 
     /**
@@ -43,6 +44,7 @@ public function __construct()
     {
         //
        $cliente =  Cliente::create([
+            'user_id' => $request->user_id,
             'nombre' => $request->nombre,
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno,

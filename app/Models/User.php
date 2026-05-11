@@ -53,7 +53,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bitacora::class);
     }
-
+    
     /**
      * Relación con rol (PREPARADA, no obligatoria aún)
      */

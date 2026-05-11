@@ -41,6 +41,14 @@
             <label>Teléfono</label>
             <input type="text" name="telefono" class="form-control">
         </div>
+        
+        <select name="user_id" class="form-control">
+            @foreach($usuarios as $usuario)
+                <option value="{{ $usuario->id }}">
+                    {{ $usuario->name }}
+                </option>
+            @endforeach
+        </select>
 
         <div class="mb-3">
             <label>Fecha Nacimiento</label>
