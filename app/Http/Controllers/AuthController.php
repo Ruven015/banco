@@ -23,12 +23,19 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            if (auth()->user()->cliente) {
-            return redirect('/cliente');
-        }
 
-        return redirect('/'); // admin
+            $request->session()->regenerate();
+        
+
+            $user = auth()->user();
+
+            if ($user->rol_id == 2 && $user->cliente) {
+                return redirect('/cliente');
+            }
+
+            if ($user->rol_id == 1) {
+                return redirect('/');
+            }
         }
 
         return back()->withErrors([
